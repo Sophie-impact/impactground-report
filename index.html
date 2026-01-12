@@ -11,9 +11,10 @@
             --brand-dark-green: #00A86B;
             --brand-gradient: linear-gradient(135deg, #24D292 0%, #009688 100%);
             --text-dark: #1A1A1A;
-            --text-gray: #666666;
+            --text-gray: #555555;
             --bg-light: #F7F9F8;
             --surface-white: #FFFFFF;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         
         body {
@@ -26,7 +27,7 @@
             background-color: var(--bg-light);
         }
 
-        h1, h2, h3, h4 { font-weight: 800; margin: 0; letter-spacing: -0.03em; }
+        h1, h2, h3, h4, h5 { font-weight: 800; margin: 0; letter-spacing: -0.03em; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
         
         /* [유틸리티] */
@@ -79,7 +80,7 @@
         .section-tag { font-size: 0.9rem; font-weight: 800; color: var(--brand-dark-green); text-transform: uppercase; letter-spacing: 1px; display: block; text-align: center; margin-bottom: 10px; }
         .section-title { font-size: 3rem; margin-bottom: 80px; text-align: center; }
         .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .principle-card { padding: 40px; border-radius: 24px; background: #fff; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 40px rgba(0,0,0,0.03); transition: 0.3s; position: relative; overflow: hidden; }
+        .principle-card { padding: 40px; border-radius: 24px; background: #fff; border: 1px solid rgba(0,0,0,0.03); box-shadow: var(--card-shadow); transition: 0.3s; position: relative; overflow: hidden; }
         .principle-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(36, 210, 146, 0.15); border-color: var(--brand-green); }
         .principle-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--brand-gradient); }
         .principle-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--brand-dark-green); }
@@ -98,7 +99,7 @@
         .case-slider { display: flex; overflow-x: auto; gap: 24px; padding: 20px 10px 40px; scroll-behavior: smooth; }
         .case-slider::-webkit-scrollbar { height: 6px; }
         .case-slider::-webkit-scrollbar-thumb { background: #A5D6A7; border-radius: 3px; }
-        .case-card { min-width: 340px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: all 0.3s; cursor: pointer; position: relative; border: 1px solid rgba(0,0,0,0.03); }
+        .case-card { min-width: 340px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); transition: all 0.3s; cursor: pointer; position: relative; border: 1px solid rgba(0,0,0,0.03); }
         .case-card:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 20px 40px rgba(36, 210, 146, 0.2); }
         .case-img { height: 220px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .card-bg-1 { background: linear-gradient(135deg, #42A5F5, #1E88E5); }
@@ -115,13 +116,51 @@
         .case-title { font-size: 1.4rem; margin-bottom: 12px; line-height: 1.3; color: var(--text-dark); }
         .case-desc { font-size: 1rem; color: var(--text-gray); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* [Data Highlight] */
-        .data { padding: 140px 0; text-align: center; background: #fff; position: relative; }
-        .data-grid { display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; margin-top: 60px; }
-        .data-item h3 { font-size: 5rem; margin-bottom: 10px; font-weight: 900; background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .data-item p { font-size: 1.2rem; color: var(--text-gray); font-weight: 600; }
+        /* [NEW Data Highlight Section - Detailed Dashboard] */
+        .data { padding: 140px 0; background: #fff; position: relative; }
+        
+        .impact-container { display: flex; flex-direction: column; gap: 60px; max-width: 1100px; margin: 0 auto; }
+        
+        /* 대시보드 카드 스타일 */
+        .impact-dashboard-card {
+            background: #fff; border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.03); overflow: hidden;
+        }
+        .impact-header {
+            background: #F1F8E9; padding: 25px 40px; display: flex; align-items: center; gap: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .impact-num-circle { 
+            width: 40px; height: 40px; background: var(--brand-dark-green); color: #fff; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem;
+        }
+        .impact-header h3 { font-size: 1.5rem; color: var(--text-dark); }
 
-        /* [NEW Modal System: Process Flow] */
+        .impact-body { padding: 40px; display: grid; gap: 40px; }
+        
+        /* Type 1: Beneficiaries (2 Columns) */
+        .grid-2-col { grid-template-columns: 1fr 1fr; }
+        .impact-stat-group { display: flex; flex-direction: column; gap: 15px; }
+        .impact-main-stat { position: relative; padding-left: 20px; border-left: 4px solid var(--brand-green); }
+        .impact-big-num { font-size: 3.5rem; font-weight: 900; line-height: 1; color: var(--brand-dark-green); display: block; margin-bottom: 5px; }
+        .impact-label { font-size: 1.1rem; font-weight: 700; color: #444; }
+        .impact-sub-list { list-style: none; padding: 0; margin-top: 15px; font-size: 0.95rem; color: #666; }
+        .impact-sub-list li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+        .impact-sub-list li::before { content: '•'; color: var(--brand-green); font-weight: bold; }
+
+        /* Type 2 & 3: 3 Columns */
+        .grid-3-col { grid-template-columns: repeat(3, 1fr); }
+        .stat-card-mini { 
+            background: #FAFAFA; padding: 25px; border-radius: 16px; text-align: center;
+            transition: 0.3s; border: 1px solid #eee;
+        }
+        .stat-card-mini:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--brand-green); }
+        .mini-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+        .mini-title { font-size: 1rem; color: #666; font-weight: 700; margin-bottom: 5px; display: block;}
+        .mini-num { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); display: block; margin-bottom: 10px;}
+        .mini-desc { font-size: 0.85rem; color: #888; line-height: 1.4; }
+
+        /* [Modal & Animation CSS - Kept from previous] */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.7); z-index: 2000;
@@ -130,7 +169,6 @@
             backdrop-filter: blur(8px);
         }
         .modal-overlay.active { display: flex; opacity: 1; }
-        
         .modal-box {
             background: #fff; width: 95%; max-width: 1000px; max-height: 90vh;
             border-radius: 24px; overflow-y: auto; position: relative;
@@ -138,68 +176,48 @@
             box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.3);
         }
         .modal-overlay.active .modal-box { transform: translateY(0); }
-
-        .modal-header { padding: 40px 40px 30px; color: #fff; background: var(--brand-gradient); position: relative; overflow: hidden;}
+        .modal-header { padding: 40px 40px 30px; color: #fff; background: var(--brand-gradient); position: relative; }
         .modal-tag { background: rgba(255,255,255,0.25); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 15px; }
         .modal-title { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.2; position: relative; z-index: 2; }
         .modal-org { font-size: 1.1rem; opacity: 0.9; font-weight: 500; position: relative; z-index: 2; }
-
         .modal-body { padding: 50px 40px; background: #FAFAFA; }
-
-        /* 프로세스 애니메이션 컨테이너 */
-        .process-container {
-            display: flex; align-items: stretch; justify-content: space-between;
-            gap: 20px; margin-top: 20px;
-        }
-        
-        /* 각 단계 박스 */
-        .process-step {
-            flex: 1; background: #fff; padding: 30px 25px; border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);
-            opacity: 0; transform: translateX(-30px); /* 초기 상태 */
-            display: flex; flex-direction: column;
-        }
-        
-        /* 화살표 */
-        .process-arrow {
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; color: #ccc; font-weight: 900;
-            opacity: 0; transform: scale(0.5); width: 40px;
-        }
-
+        .process-container { display: flex; align-items: stretch; justify-content: space-between; gap: 20px; margin-top: 20px; }
+        .process-step { flex: 1; background: #fff; padding: 30px 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); opacity: 0; transform: translateX(-30px); display: flex; flex-direction: column; }
+        .process-arrow { display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #ccc; font-weight: 900; opacity: 0; transform: scale(0.5); width: 40px; }
         .step-header { font-size: 1.2rem; font-weight: 800; margin-bottom: 15px; display: block; text-transform: uppercase; letter-spacing: 1px;}
         .step-title { font-size: 1.1rem; font-weight: 700; color: #222; margin-bottom: 10px; line-height: 1.4; }
         .step-desc { font-size: 0.95rem; color: #666; line-height: 1.6; }
-
-        /* 컬러 테마 적용 */
-        .step-1 .step-header { color: #546E7A; } /* Solution: 차분한 톤 */
-        .step-2 .step-header { color: var(--brand-dark-green); } /* Trigger: 브랜드 컬러 */
-        .step-3 .step-header { color: #1565C0; } /* Impact: 강조 톤 */
-        
-        .step-3 { background: #E3F2FD; border: 1px solid #BBDEFB; } /* Impact 박스는 강조 */
-
-        /* 애니메이션 키프레임 */
+        .step-1 .step-header { color: #546E7A; } .step-2 .step-header { color: var(--brand-dark-green); } .step-3 .step-header { color: #1565C0; } .step-3 { background: #E3F2FD; border: 1px solid #BBDEFB; }
         @keyframes slideInBox { to { opacity: 1; transform: translateX(0); } }
         @keyframes growArrow { to { opacity: 1; transform: scale(1); color: var(--brand-dark-green); } }
-
-        /* 순차적 실행 클래스 (JS에서 제어) */
         .modal-overlay.active .step-1 { animation: slideInBox 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards; }
         .modal-overlay.active .arrow-1 { animation: growArrow 0.4s ease 0.6s forwards; }
         .modal-overlay.active .step-2 { animation: slideInBox 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards; }
         .modal-overlay.active .arrow-2 { animation: growArrow 0.4s ease 1.2s forwards; }
         .modal-overlay.active .step-3 { animation: slideInBox 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.4s forwards; }
-
         .close-btn { position: absolute; top: 20px; right: 20px; z-index: 10; background: rgba(255,255,255,0.2); border: none; font-size: 1.5rem; cursor: pointer; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; backdrop-filter: blur(4px); }
         .close-btn:hover { background: rgba(255,255,255,0.4); transform: rotate(90deg); }
 
-        /* Responsive Mobile */
+        /* Footer */
+        footer { padding: 80px 0; text-align: center; border-top: 1px solid #eee; background: #fff; }
+        .footer-logo { font-weight: 900; font-size: 1.5rem; color: #111; margin-bottom: 10px; display: block; letter-spacing: -0.05em;}
+        .footer-text { font-size: 0.9rem; color: #888; margin-bottom: 30px; }
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 40px; background: var(--text-dark); color: #fff;
+            text-decoration: none; border-radius: 50px; font-weight: 700;
+            transition: all 0.3s;
+        }
+        .download-btn:hover { background: var(--brand-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(36, 210, 146, 0.4); }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
             .trigger-grid { grid-template-columns: 1fr; }
-            .data-grid { gap: 40px; }
+            .grid-2-col, .grid-3-col { grid-template-columns: 1fr; gap: 30px; }
+            .impact-body { padding: 25px; }
             .process-container { flex-direction: column; gap: 10px; }
             .process-arrow { transform: rotate(90deg); width: 100%; height: 30px; opacity: 0; }
-            /* 모바일 애니메이션 조정 */
             @keyframes growArrowMobile { to { opacity: 1; transform: rotate(90deg) scale(1); color: var(--brand-dark-green); } }
             .modal-overlay.active .arrow-1 { animation: growArrowMobile 0.4s ease 0.6s forwards; }
             .modal-overlay.active .arrow-2 { animation: growArrowMobile 0.4s ease 1.2s forwards; }
@@ -352,13 +370,101 @@
     <section class="data">
         <div class="container">
             <span class="section-tag">TOTAL IMPACT</span>
-            <h2 class="section-title fade-in">Our Impact</h2>
-            <div class="data-grid">
-                <div class="data-item fade-in"><h3 data-target="102">0</h3><p>사업 수혜 인원 (만 명)</p></div>
-                <div class="data-item fade-in"><h3 data-target="46">0</h3><p>총 수혜 금액 (억 원)</p></div>
-                <div class="data-item fade-in"><h3 data-target="80">0</h3><p>정책 및 제도 변화 (건)</p></div>
+            <h2 class="section-title fade-in" style="margin-bottom: 60px;">Our Impact (2023-2024)</h2>
+            
+            <div class="impact-container fade-in">
+                
+                <div class="impact-dashboard-card">
+                    <div class="impact-header">
+                        <div class="impact-num-circle">1</div>
+                        <h3>수혜자의 변화</h3>
+                    </div>
+                    <div class="impact-body grid-2-col">
+                        <div class="impact-stat-group">
+                            <span class="impact-label">👨‍👩‍👧‍👦 사람 (People)</span>
+                            <div class="impact-main-stat">
+                                <span class="impact-big-num" data-target="102">0</span>
+                                <strong>102만 명</strong>
+                                <ul class="impact-sub-list">
+                                    <li>서비스 수혜: 1,019,039명</li>
+                                    <li>사업 운영 횟수: 535,500회</li>
+                                </ul>
+                            </div>
+                            <div class="impact-main-stat" style="margin-top: 20px; border-color: #FFB74D;">
+                                <span class="impact-big-num" style="color:#F57C00;" data-target="46">0</span>
+                                <strong>46.2억 원</strong> (총 수혜 금액)
+                            </div>
+                        </div>
+                        <div class="impact-stat-group">
+                            <span class="impact-label">🌱 환경 (Environment)</span>
+                            <div class="impact-main-stat" style="border-color: #26C6DA;">
+                                <strong style="font-size:1.2rem; color:#00838F;">11.2만 kg</strong> (해양쓰레기 수거)
+                                <ul class="impact-sub-list">
+                                    <li>공유옷장 경제적 가치: <strong>92억 원</strong></li>
+                                    <li>산양 보호 면적: 10,284ha</li>
+                                    <li>해양 인증 부표 전환율: 100%</li>
+                                    <li>투명 방음벽 새 충돌 사고 감소율: 100%</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-dashboard-card">
+                    <div class="impact-header">
+                        <div class="impact-num-circle">2</div>
+                        <h3>사회 주체의 변화</h3>
+                    </div>
+                    <div class="impact-body grid-3-col">
+                        <div class="stat-card-mini">
+                            <span class="mini-icon">🙌</span>
+                            <span class="mini-title">시민 (Citizens)</span>
+                            <span class="mini-num">85만 명</span>
+                            <span class="mini-desc">참여 시민 84.5만명<br>사업 운영 2,937회</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="mini-icon">🏢</span>
+                            <span class="mini-title">기업 (Companies)</span>
+                            <span class="mini-num">70건</span>
+                            <span class="mini-desc">기업 관행 변화 19건<br>시정 촉구 활동 51건</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="mini-icon">🏛️</span>
+                            <span class="mini-title">정부 (Government)</span>
+                            <span class="mini-num">80건</span>
+                            <span class="mini-desc">정책 및 제도 변화 80건<br>언론 대응 668회</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-dashboard-card">
+                    <div class="impact-header">
+                        <div class="impact-num-circle">3</div>
+                        <h3>사회 자본의 변화</h3>
+                    </div>
+                    <div class="impact-body grid-3-col">
+                        <div class="stat-card-mini">
+                            <span class="mini-icon">🧠</span>
+                            <span class="mini-title">인적·지적 자본</span>
+                            <span class="mini-num">26.3만 명</span>
+                            <span class="mini-desc">후원자 25만 / 활동가 1.1만<br>연구 보고서 129건</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="mini-icon">🤝</span>
+                            <span class="mini-title">사회 자본</span>
+                            <span class="mini-num">1,921개</span>
+                            <span class="mini-desc">네트워크 구축 1,907개<br>공간 구축 14개</span>
+                        </div>
+                        <div class="stat-card-mini">
+                            <span class="mini-icon">💰</span>
+                            <span class="mini-title">경제 자본</span>
+                            <span class="mini-num">763억 원</span>
+                            <span class="mini-desc">기금 및 대출 503억<br>후원금 259억</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <p style="margin-top: 50px; color: #999; font-size: 0.9rem;">* 2023-2024년 주요 성과 기준</p>
         </div>
     </section>
 
@@ -379,14 +485,13 @@
                 <p class="modal-org" id="mOrg">Organization Name</p>
             </div>
             <div class="modal-body">
-                <div class="process-container" id="processContent">
-                    </div>
+                <div class="process-container" id="processContent"></div>
             </div>
         </div>
     </div>
 
     <script>
-        // 1. 파트너 상세 데이터 (Solution -> Trigger -> Impact 구조로 매핑)
+        // 1. 파트너 상세 데이터
         const partnerData = {
             'case1': {
                 org: '서울재활병원', tag: '기술화', title: 'AI, 데이터 기반 맞춤 정밀 재활', color: 'linear-gradient(135deg, #42A5F5, #1E88E5)',
@@ -444,19 +549,18 @@
             }
         };
 
-        // 2. 모달 열기 (애니메이션 HTML 주입)
+        // 2. 모달 열기
         function openModal(id) {
             const data = partnerData[id];
             if (!data) return;
 
-            // 기본 텍스트 세팅
             document.getElementById('mTag').textContent = data.tag;
             document.getElementById('mTitle').textContent = data.title;
             document.getElementById('mOrg').textContent = data.org;
             
-            // 헤더 색상 변경
+            // 헤더 색상 및 텍스트 컬러 조정
             document.querySelector('.modal-header').style.background = data.color;
-            if(id === 'case6') { // 노란색일 때 글자 검게
+            if(id === 'case6') {
                 document.querySelector('.modal-header').style.color = '#333';
                 document.querySelector('.close-btn').style.color = '#333';
                 document.querySelector('.close-btn').style.background = 'rgba(0,0,0,0.1)';
@@ -466,7 +570,6 @@
                 document.querySelector('.close-btn').style.background = 'rgba(255,255,255,0.2)';
             }
 
-            // [핵심] 프로세스 HTML 동적 생성 (Solution -> Arrow -> Trigger -> Arrow -> Impact)
             const processHTML = `
                 <div class="process-step step-1">
                     <span class="step-header">Solution</span>
@@ -486,13 +589,11 @@
                     <div class="step-desc">${data.step3_desc}</div>
                 </div>
             `;
-            
             document.getElementById('processContent').innerHTML = processHTML;
 
-            // 모달 표시
             const modalOverlay = document.getElementById('modalOverlay');
-            modalOverlay.classList.remove('active'); // 애니메이션 리셋을 위해 잠시 제거
-            void modalOverlay.offsetWidth; // 리플로우 강제 (애니메이션 재시작 트리거)
+            modalOverlay.classList.remove('active');
+            void modalOverlay.offsetWidth; // Trigger Reflow
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -514,15 +615,16 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    if (entry.target.classList.contains('data-item')) {
-                        const h3 = entry.target.querySelector('h3');
-                        if(h3) animateValue(h3, 0, parseInt(h3.getAttribute('data-target')), 2000);
+                    // Data Highlight Counting Animation
+                    if (entry.target.querySelector('.impact-big-num')) {
+                        const nums = entry.target.querySelectorAll('.impact-big-num');
+                        nums.forEach(num => animateValue(num, 0, parseInt(num.getAttribute('data-target')), 2000));
                     }
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in, .data-item').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         function animateValue(obj, start, end, duration) {
             if (obj.classList.contains('counted')) return;
@@ -530,7 +632,13 @@
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                // 소수점 처리 (46.2 같은 경우)
+                if(end === 46) {
+                     obj.innerHTML = (progress * 46.2).toFixed(1);
+                } else {
+                     obj.innerHTML = Math.floor(progress * (end - start) + start);
+                }
+                
                 if (progress < 1) {
                     window.requestAnimationFrame(step);
                 } else {
