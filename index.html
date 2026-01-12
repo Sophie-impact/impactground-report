@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025 임팩트그라운드 성과보고서</title>
     <style>
-        /* [브랜드 아이덴티티 시스템: Green & 3D Impact] */
+        /* [브랜드 아이덴티티 시스템] */
         :root {
             --brand-green: #24D292;
             --brand-dark-green: #00A86B;
             --brand-gradient: linear-gradient(135deg, #24D292 0%, #009688 100%);
             --text-dark: #1A1A1A;
-            --text-gray: #555555;
+            --text-gray: #666666;
             --bg-light: #F7F9F8;
             --surface-white: #FFFFFF;
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         
         body {
@@ -80,7 +79,7 @@
         .section-tag { font-size: 0.9rem; font-weight: 800; color: var(--brand-dark-green); text-transform: uppercase; letter-spacing: 1px; display: block; text-align: center; margin-bottom: 10px; }
         .section-title { font-size: 3rem; margin-bottom: 80px; text-align: center; }
         .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .principle-card { padding: 40px; border-radius: 24px; background: #fff; border: 1px solid rgba(0,0,0,0.03); box-shadow: var(--card-shadow); transition: 0.3s; position: relative; overflow: hidden; }
+        .principle-card { padding: 40px; border-radius: 24px; background: #fff; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; position: relative; overflow: hidden; }
         .principle-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(36, 210, 146, 0.15); border-color: var(--brand-green); }
         .principle-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--brand-gradient); }
         .principle-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--brand-dark-green); }
@@ -99,7 +98,7 @@
         .case-slider { display: flex; overflow-x: auto; gap: 24px; padding: 20px 10px 40px; scroll-behavior: smooth; }
         .case-slider::-webkit-scrollbar { height: 6px; }
         .case-slider::-webkit-scrollbar-thumb { background: #A5D6A7; border-radius: 3px; }
-        .case-card { min-width: 340px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); transition: all 0.3s; cursor: pointer; position: relative; border: 1px solid rgba(0,0,0,0.03); }
+        .case-card { min-width: 340px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.3s; cursor: pointer; position: relative; border: 1px solid rgba(0,0,0,0.03); }
         .case-card:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 20px 40px rgba(36, 210, 146, 0.2); }
         .case-img { height: 220px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .card-bg-1 { background: linear-gradient(135deg, #42A5F5, #1E88E5); }
@@ -116,65 +115,70 @@
         .case-title { font-size: 1.4rem; margin-bottom: 12px; line-height: 1.3; color: var(--text-dark); }
         .case-desc { font-size: 1rem; color: var(--text-gray); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* [NEW Data Highlight Section - Detailed Dashboard] */
+        /* [NEW: Detailed Impact Dashboard] */
         .data { padding: 140px 0; background: #fff; position: relative; }
         
-        .impact-container { display: flex; flex-direction: column; gap: 60px; max-width: 1100px; margin: 0 auto; }
+        .impact-dashboard {
+            display: flex; flex-direction: column; gap: 60px;
+            max-width: 1100px; margin: 0 auto;
+        }
+
+        /* 공통 카드 스타일 */
+        .impact-section-card {
+            background: #fff; border-radius: 24px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05); overflow: hidden;
+        }
         
-        /* 대시보드 카드 스타일 */
-        .impact-dashboard-card {
-            background: #fff; border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.03); overflow: hidden;
+        /* 섹션 헤더 */
+        .impact-section-header {
+            background: #F1F8E9; padding: 25px 40px; border-bottom: 1px solid #E0E0E0;
+            display: flex; align-items: center; gap: 15px;
         }
-        .impact-header {
-            background: #F1F8E9; padding: 25px 40px; display: flex; align-items: center; gap: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+        .impact-badge {
+            background: var(--brand-dark-green); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem;
         }
-        .impact-num-circle { 
-            width: 40px; height: 40px; background: var(--brand-dark-green); color: #fff; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem;
-        }
-        .impact-header h3 { font-size: 1.5rem; color: var(--text-dark); }
+        .impact-section-title { font-size: 1.4rem; color: var(--text-dark); margin: 0; }
 
-        .impact-body { padding: 40px; display: grid; gap: 40px; }
-        
-        /* Type 1: Beneficiaries (2 Columns) */
-        .grid-2-col { grid-template-columns: 1fr 1fr; }
-        .impact-stat-group { display: flex; flex-direction: column; gap: 15px; }
-        .impact-main-stat { position: relative; padding-left: 20px; border-left: 4px solid var(--brand-green); }
-        .impact-big-num { font-size: 3.5rem; font-weight: 900; line-height: 1; color: var(--brand-dark-green); display: block; margin-bottom: 5px; }
-        .impact-label { font-size: 1.1rem; font-weight: 700; color: #444; }
-        .impact-sub-list { list-style: none; padding: 0; margin-top: 15px; font-size: 0.95rem; color: #666; }
-        .impact-sub-list li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
-        .impact-sub-list li::before { content: '•'; color: var(--brand-green); font-weight: bold; }
-
-        /* Type 2 & 3: 3 Columns */
-        .grid-3-col { grid-template-columns: repeat(3, 1fr); }
-        .stat-card-mini { 
-            background: #FAFAFA; padding: 25px; border-radius: 16px; text-align: center;
-            transition: 0.3s; border: 1px solid #eee;
+        /* 섹션 바디 그리드 */
+        .impact-grid {
+            display: grid; padding: 40px; gap: 40px;
         }
-        .stat-card-mini:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--brand-green); }
-        .mini-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
-        .mini-title { font-size: 1rem; color: #666; font-weight: 700; margin-bottom: 5px; display: block;}
-        .mini-num { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); display: block; margin-bottom: 10px;}
-        .mini-desc { font-size: 0.85rem; color: #888; line-height: 1.4; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
-        /* [Modal & Animation CSS - Kept from previous] */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); z-index: 2000;
-            display: none; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.3s ease;
-            backdrop-filter: blur(8px);
+        /* 개별 통계 아이템 */
+        .stat-group { display: flex; flex-direction: column; gap: 20px; }
+        .stat-item {
+            padding-left: 20px; border-left: 4px solid #eee; transition: 0.3s;
         }
+        .stat-item:hover { border-left-color: var(--brand-green); }
+        .stat-label { 
+            font-size: 1rem; font-weight: 700; color: #555; display: flex; align-items: center; gap: 8px; margin-bottom: 5px;
+        }
+        .stat-value {
+            font-size: 2.8rem; font-weight: 900; line-height: 1.1; 
+            background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            display: block; margin-bottom: 8px;
+        }
+        .stat-unit { font-size: 1.2rem; color: #888; font-weight: 600; -webkit-text-fill-color: #888; }
+        .stat-desc { font-size: 0.9rem; color: #777; list-style: none; padding: 0; margin: 0; }
+        .stat-desc li { margin-bottom: 4px; position: relative; padding-left: 12px; }
+        .stat-desc li::before { content: '•'; position: absolute; left: 0; color: var(--brand-green); }
+
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 30px; }
+            .impact-section-header, .impact-grid { padding: 25px; }
+            .stat-value { font-size: 2.2rem; }
+        }
+
+        /* [Modal & Animation CSS] */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(8px); }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-box {
-            background: #fff; width: 95%; max-width: 1000px; max-height: 90vh;
-            border-radius: 24px; overflow-y: auto; position: relative;
-            transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.3);
-        }
+        .modal-box { background: #fff; width: 95%; max-width: 1000px; max-height: 90vh; border-radius: 24px; overflow-y: auto; position: relative; transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.3); }
         .modal-overlay.active .modal-box { transform: translateY(0); }
         .modal-header { padding: 40px 40px 30px; color: #fff; background: var(--brand-gradient); position: relative; }
         .modal-tag { background: rgba(255,255,255,0.25); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 15px; }
@@ -209,19 +213,6 @@
             transition: all 0.3s;
         }
         .download-btn:hover { background: var(--brand-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(36, 210, 146, 0.4); }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .trigger-grid { grid-template-columns: 1fr; }
-            .grid-2-col, .grid-3-col { grid-template-columns: 1fr; gap: 30px; }
-            .impact-body { padding: 25px; }
-            .process-container { flex-direction: column; gap: 10px; }
-            .process-arrow { transform: rotate(90deg); width: 100%; height: 30px; opacity: 0; }
-            @keyframes growArrowMobile { to { opacity: 1; transform: rotate(90deg) scale(1); color: var(--brand-dark-green); } }
-            .modal-overlay.active .arrow-1 { animation: growArrowMobile 0.4s ease 0.6s forwards; }
-            .modal-overlay.active .arrow-2 { animation: growArrowMobile 0.4s ease 1.2s forwards; }
-        }
     </style>
 </head>
 <body>
@@ -293,75 +284,39 @@
             <div class="case-slider fade-in">
                 <div class="case-card" onclick="openModal('case1')">
                     <div class="case-img card-bg-1">서울재활병원</div>
-                    <div class="case-content">
-                        <span class="case-tag">기술화</span>
-                        <div class="case-title">데이터 기반 맞춤 재활</div>
-                        <p class="case-desc">AI와 데이터를 활용해 병원을 넘어 일상까지 이어지는 재활 플랫폼 RISE 구축.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">기술화</span><div class="case-title">데이터 기반 맞춤 재활</div><p class="case-desc">AI와 데이터를 활용해 병원을 넘어 일상까지 이어지는 재활 플랫폼 RISE 구축.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case2')">
                     <div class="case-img card-bg-2">노동환경건강연구소</div>
-                    <div class="case-content">
-                        <span class="case-tag">기술화</span>
-                        <div class="case-title">화학안전 공공 IT 솔루션</div>
-                        <p class="case-desc">누구나 쉽게 확인하는 화학물질 안전정보 DB 구축 및 제품안전 관리.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">기술화</span><div class="case-title">화학안전 공공 IT 솔루션</div><p class="case-desc">누구나 쉽게 확인하는 화학물질 안전정보 DB 구축 및 제품안전 관리.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case3')">
                     <div class="case-img card-bg-3">오션 (OSEAN)</div>
-                    <div class="case-content">
-                        <span class="case-tag">참여적 지지자</span>
-                        <div class="case-title">바다기사단과 시민과학</div>
-                        <p class="case-desc">시민 참여형 해양쓰레기 모니터링 및 빅데이터 플랫폼 구축.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">참여적 지지자</span><div class="case-title">바다기사단과 시민과학</div><p class="case-desc">시민 참여형 해양쓰레기 모니터링 및 빅데이터 플랫폼 구축.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case4')">
                     <div class="case-img card-bg-4">푸른나무재단</div>
-                    <div class="case-content">
-                        <span class="case-tag">플랫폼</span>
-                        <div class="case-title">사이좋은 디지털 프렌즈</div>
-                        <p class="case-desc">학교폭력 예방을 넘어선 디지털 시민성 교육 플랫폼으로의 전환.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">플랫폼</span><div class="case-title">사이좋은 디지털 프렌즈</div><p class="case-desc">학교폭력 예방을 넘어선 디지털 시민성 교육 플랫폼으로의 전환.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case5')">
                     <div class="case-img card-bg-5">세상을품은아이들</div>
-                    <div class="case-content">
-                        <span class="case-tag">플랫폼</span>
-                        <div class="case-title">위기청소년 회복 시스템</div>
-                        <p class="case-desc">데이터 기반 사례관리시스템(RTS)을 통한 맞춤형 자립 지원.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">플랫폼</span><div class="case-title">위기청소년 회복 시스템</div><p class="case-desc">데이터 기반 사례관리시스템(RTS)을 통한 맞춤형 자립 지원.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case6')">
                     <div class="case-img card-bg-6">점프 (JUMP)</div>
-                    <div class="case-content">
-                        <span class="case-tag">참여적 지지자</span>
-                        <div class="case-title">삼각 멘토링의 글로벌 확장</div>
-                        <p class="case-desc">교육 불평등 해소를 위한 멘토링 모델의 체계화 및 해외 확산.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">참여적 지지자</span><div class="case-title">삼각 멘토링의 글로벌 확장</div><p class="case-desc">교육 불평등 해소를 위한 멘토링 모델의 체계화 및 해외 확산.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case7')">
                     <div class="case-img card-bg-7">공감</div>
-                    <div class="case-content">
-                        <span class="case-tag">전문성 활용</span>
-                        <div class="case-title">공익법 생태계 확장</div>
-                        <p class="case-desc">사회적 약자를 위한 공익소송 및 공익변호사 양성 시스템 구축.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">전문성 활용</span><div class="case-title">공익법 생태계 확장</div><p class="case-desc">사회적 약자를 위한 공익소송 및 공익변호사 양성 시스템 구축.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case8')">
                     <div class="case-img card-bg-8">열린옷장</div>
-                    <div class="case-content">
-                        <span class="case-tag">시장화</span>
-                        <div class="case-title">온라인 의류 공유 플랫폼</div>
-                        <p class="case-desc">청년 정장 대여를 넘어 누구나 이용하는 의류 공유 문화 정착.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">시장화</span><div class="case-title">온라인 의류 공유 플랫폼</div><p class="case-desc">청년 정장 대여를 넘어 누구나 이용하는 의류 공유 문화 정착.</p></div>
                 </div>
                 <div class="case-card" onclick="openModal('case9')">
                     <div class="case-img card-bg-9">피치마켓</div>
-                    <div class="case-content">
-                        <span class="case-tag">시장화</span>
-                        <div class="case-title">쉬운 글 구독 플랫폼</div>
-                        <p class="case-desc">느린학습자를 위한 디지털 콘텐츠 구독 서비스 '피치서가' 운영.</p>
-                    </div>
+                    <div class="case-content"><span class="case-tag">시장화</span><div class="case-title">쉬운 글 구독 플랫폼</div><p class="case-desc">느린학습자를 위한 디지털 콘텐츠 구독 서비스 '피치서가' 운영.</p></div>
                 </div>
             </div>
         </div>
@@ -372,94 +327,115 @@
             <span class="section-tag">TOTAL IMPACT</span>
             <h2 class="section-title fade-in" style="margin-bottom: 60px;">Our Impact (2023-2024)</h2>
             
-            <div class="impact-container fade-in">
+            <div class="impact-dashboard fade-in">
                 
-                <div class="impact-dashboard-card">
-                    <div class="impact-header">
-                        <div class="impact-num-circle">1</div>
-                        <h3>수혜자의 변화</h3>
+                <div class="impact-section-card">
+                    <div class="impact-section-header">
+                        <span class="impact-badge">1</span>
+                        <h3 class="impact-section-title">수혜자의 변화</h3>
                     </div>
-                    <div class="impact-body grid-2-col">
-                        <div class="impact-stat-group">
-                            <span class="impact-label">👨‍👩‍👧‍👦 사람 (People)</span>
-                            <div class="impact-main-stat">
-                                <span class="impact-big-num" data-target="102">0</span>
-                                <strong>102만 명</strong>
-                                <ul class="impact-sub-list">
-                                    <li>서비스 수혜: 1,019,039명</li>
-                                    <li>사업 운영 횟수: 535,500회</li>
+                    <div class="impact-grid grid-2">
+                        <div class="stat-group">
+                            <div class="stat-item">
+                                <span class="stat-label">👨‍👩‍👧‍👦 사업 수혜 인원 (People)</span>
+                                <span class="stat-value" data-target="102">0<span class="stat-unit">만 명</span></span>
+                                <ul class="stat-desc">
+                                    [cite_start]<li>서비스 수혜 인원 1,019,039명 [cite: 1265]</li>
+                                    [cite_start]<li>사업 운영 횟수 535,500회 [cite: 1262]</li>
                                 </ul>
                             </div>
-                            <div class="impact-main-stat" style="margin-top: 20px; border-color: #FFB74D;">
-                                <span class="impact-big-num" style="color:#F57C00;" data-target="46">0</span>
-                                <strong>46.2억 원</strong> (총 수혜 금액)
+                            <div class="stat-item">
+                                <span class="stat-label">💰 총 수혜 금액 (Support)</span>
+                                <span class="stat-value" data-target="46.2">0<span class="stat-unit">억 원</span></span>
+                                <ul class="stat-desc">
+                                    [cite_start]<li>4,620,256,160원 [cite: 1268]</li>
+                                    [cite_start]<li>공유옷장 경제적 가치 92억 원 [cite: 1271]</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="impact-stat-group">
-                            <span class="impact-label">🌱 환경 (Environment)</span>
-                            <div class="impact-main-stat" style="border-color: #26C6DA;">
-                                <strong style="font-size:1.2rem; color:#00838F;">11.2만 kg</strong> (해양쓰레기 수거)
-                                <ul class="impact-sub-list">
-                                    <li>공유옷장 경제적 가치: <strong>92억 원</strong></li>
-                                    <li>산양 보호 면적: 10,284ha</li>
-                                    <li>해양 인증 부표 전환율: 100%</li>
-                                    <li>투명 방음벽 새 충돌 사고 감소율: 100%</li>
+                        <div class="stat-group">
+                            <div class="stat-item">
+                                <span class="stat-label">🌊 해양 쓰레기 수거 (Trash)</span>
+                                <span class="stat-value" data-target="11.2">0<span class="stat-unit">만 kg</span></span>
+                                <ul class="stat-desc">
+                                    [cite_start]<li>112,164 kg 수거 [cite: 1281]</li>
+                                    [cite_start]<li>해양 인증 부표 전환율 100% [cite: 1280]</li>
+                                </ul>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">🌲 환경 보호 (Nature)</span>
+                                <span class="stat-value" data-target="10284">0<span class="stat-unit">ha</span></span>
+                                <ul class="stat-desc">
+                                    [cite_start]<li>산양 보호 면적 10,284ha [cite: 1275]</li>
+                                    [cite_start]<li>거문도 해양생물 서식밀도 50% 증가 [cite: 1277]</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="impact-dashboard-card">
-                    <div class="impact-header">
-                        <div class="impact-num-circle">2</div>
-                        <h3>사회 주체의 변화</h3>
+                <div class="impact-section-card">
+                    <div class="impact-section-header">
+                        <span class="impact-badge">2</span>
+                        <h3 class="impact-section-title">사회 주체의 변화</h3>
                     </div>
-                    <div class="impact-body grid-3-col">
-                        <div class="stat-card-mini">
-                            <span class="mini-icon">🙌</span>
-                            <span class="mini-title">시민 (Citizens)</span>
-                            <span class="mini-num">85만 명</span>
-                            <span class="mini-desc">참여 시민 84.5만명<br>사업 운영 2,937회</span>
+                    <div class="impact-grid grid-3">
+                        <div class="stat-item">
+                            <span class="stat-label">🙌 참여 시민 (Citizens)</span>
+                            <span class="stat-value" data-target="85">0<span class="stat-unit">만 명</span></span>
+                            <ul class="stat-desc">
+                                [cite_start]<li>시민 참여 845,321명 [cite: 1306]</li>
+                                [cite_start]<li>사업 운영 2,937회 [cite: 1307]</li>
+                            </ul>
                         </div>
-                        <div class="stat-card-mini">
-                            <span class="mini-icon">🏢</span>
-                            <span class="mini-title">기업 (Companies)</span>
-                            <span class="mini-num">70건</span>
-                            <span class="mini-desc">기업 관행 변화 19건<br>시정 촉구 활동 51건</span>
+                        <div class="stat-item">
+                            <span class="stat-label">🏢 기업 변화 (Corporate)</span>
+                            <span class="stat-value" data-target="70">0<span class="stat-unit">건</span></span>
+                            <ul class="stat-desc">
+                                [cite_start]<li>기업 관행 변화 19건 [cite: 1312]</li>
+                                [cite_start]<li>시정 촉구 활동 51건 [cite: 1314]</li>
+                            </ul>
                         </div>
-                        <div class="stat-card-mini">
-                            <span class="mini-icon">🏛️</span>
-                            <span class="mini-title">정부 (Government)</span>
-                            <span class="mini-num">80건</span>
-                            <span class="mini-desc">정책 및 제도 변화 80건<br>언론 대응 668회</span>
+                        <div class="stat-item">
+                            <span class="stat-label">🏛️ 정부 변화 (Policy)</span>
+                            <span class="stat-value" data-target="80">0<span class="stat-unit">건</span></span>
+                            <ul class="stat-desc">
+                                [cite_start]<li>정책 및 제도 변화 80건 [cite: 1321]</li>
+                                [cite_start]<li>정책 관련 언론 대응 668회 [cite: 1322]</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="impact-dashboard-card">
-                    <div class="impact-header">
-                        <div class="impact-num-circle">3</div>
-                        <h3>사회 자본의 변화</h3>
+                <div class="impact-section-card">
+                    <div class="impact-section-header">
+                        <span class="impact-badge">3</span>
+                        <h3 class="impact-section-title">사회 자본의 변화</h3>
                     </div>
-                    <div class="impact-body grid-3-col">
-                        <div class="stat-card-mini">
-                            <span class="mini-icon">🧠</span>
-                            <span class="mini-title">인적·지적 자본</span>
-                            <span class="mini-num">26.3만 명</span>
-                            <span class="mini-desc">후원자 25만 / 활동가 1.1만<br>연구 보고서 129건</span>
+                    <div class="impact-grid grid-3">
+                        <div class="stat-item">
+                            <span class="stat-label">🧠 인적 자본 (Human)</span>
+                            <span class="stat-value" data-target="26.3">0<span class="stat-unit">만 명</span></span>
+                            <ul class="stat-desc">
+                                [cite_start]<li>후원자 251,940명 [cite: 1356]</li>
+                                [cite_start]<li>활동가 11,622명 [cite: 1357]</li>
+                            </ul>
                         </div>
-                        <div class="stat-card-mini">
-                            <span class="mini-icon">🤝</span>
-                            <span class="mini-title">사회 자본</span>
-                            <span class="mini-num">1,921개</span>
-                            <span class="mini-desc">네트워크 구축 1,907개<br>공간 구축 14개</span>
+                        <div class="stat-item">
+                            <span class="stat-label">🤝 사회 자본 (Network)</span>
+                            <span class="stat-value" data-target="1921">0<span class="stat-unit">개</span></span>
+                            <ul class="stat-desc">
+                                [cite_start]<li>네트워크 구축 1,907개 [cite: 1375]</li>
+                                [cite_start]<li>공간 구축 14개 [cite: 1376]</li>
+                            </ul>
                         </div>
-                        <div class="stat-card-mini">
-                            <span class="mini-icon">💰</span>
-                            <span class="mini-title">경제 자본</span>
-                            <span class="mini-num">763억 원</span>
-                            <span class="mini-desc">기금 및 대출 503억<br>후원금 259억</span>
+                        <div class="stat-item">
+                            <span class="stat-label">💰 경제 자본 (Finance)</span>
+                            <span class="stat-value" data-target="763">0<span class="stat-unit">억 원</span></span>
+                            <ul class="stat-desc">
+                                [cite_start]<li>기금 및 대출 503억 원 [cite: 1381]</li>
+                                [cite_start]<li>후원금 259억 원 [cite: 1381]</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -610,16 +586,17 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // 3. 스크롤 인터랙션
+        // 3. 스크롤 인터랙션 & 숫자 애니메이션 (업그레이드: 소수점 지원)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Data Highlight Counting Animation
-                    if (entry.target.querySelector('.impact-big-num')) {
-                        const nums = entry.target.querySelectorAll('.impact-big-num');
-                        nums.forEach(num => animateValue(num, 0, parseInt(num.getAttribute('data-target')), 2000));
-                    }
+                    // 상세 대시보드 내 숫자 카운팅
+                    const nums = entry.target.querySelectorAll('.stat-value');
+                    nums.forEach(num => {
+                        const target = parseFloat(num.getAttribute('data-target'));
+                        if(!isNaN(target)) animateValue(num, 0, target, 2000);
+                    });
                 }
             });
         }, { threshold: 0.1 });
@@ -632,17 +609,27 @@
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                // 소수점 처리 (46.2 같은 경우)
-                if(end === 46) {
-                     obj.innerHTML = (progress * 46.2).toFixed(1);
-                } else {
-                     obj.innerHTML = Math.floor(progress * (end - start) + start);
-                }
                 
+                // 소수점이 있는 경우 (46.2, 11.2, 26.3)
+                let current = progress * (end - start) + start;
+                
+                // 원래 숫자가 정수면 정수로, 소수면 소수점 1자리까지 표시
+                if (Number.isInteger(end)) {
+                    obj.childNodes[0].nodeValue = Math.floor(current);
+                } else {
+                    obj.childNodes[0].nodeValue = current.toFixed(1);
+                }
+
                 if (progress < 1) {
                     window.requestAnimationFrame(step);
                 } else {
                     obj.classList.add('counted');
+                    // 최종값 보정 (애니메이션 오차 방지)
+                    if (Number.isInteger(end)) {
+                        obj.childNodes[0].nodeValue = end;
+                    } else {
+                        obj.childNodes[0].nodeValue = end.toFixed(1);
+                    }
                 }
             };
             window.requestAnimationFrame(step);
