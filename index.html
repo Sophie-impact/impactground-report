@@ -11,9 +11,10 @@
             --brand-dark-green: #00A86B;
             --brand-gradient: linear-gradient(135deg, #24D292 0%, #009688 100%);
             --text-dark: #1A1A1A;
-            --text-gray: #666666;
+            --text-gray: #555555;
             --bg-light: #F7F9F8;
             --surface-white: #FFFFFF;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         
         body {
@@ -123,7 +124,7 @@
             max-width: 1100px; margin: 0 auto;
         }
 
-        /* 공통 카드 스타일 */
+        /* 섹션 카드 */
         .impact-section-card {
             background: #fff; border-radius: 24px; 
             box-shadow: 0 15px 40px rgba(0,0,0,0.06);
@@ -142,40 +143,48 @@
         }
         .impact-section-title { font-size: 1.4rem; color: var(--text-dark); margin: 0; }
 
-        /* 섹션 바디 그리드 */
+        /* 그리드 시스템 */
         .impact-grid {
             display: grid; padding: 40px; gap: 40px;
         }
         .grid-2 { grid-template-columns: 1fr 1fr; }
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
-        /* 개별 통계 아이템 */
-        .stat-group { display: flex; flex-direction: column; gap: 20px; }
+        /* 개별 통계 아이템 스타일 */
         .stat-item {
             padding-left: 20px; border-left: 4px solid #eee; transition: 0.3s;
         }
         .stat-item:hover { border-left-color: var(--brand-green); }
+        
         .stat-label { 
             font-size: 1rem; font-weight: 700; color: #555; display: flex; align-items: center; gap: 8px; margin-bottom: 5px;
         }
         .stat-value {
-            font-size: 2.8rem; font-weight: 900; line-height: 1.1; 
+            font-size: 3rem; font-weight: 900; line-height: 1.1; 
             background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             display: block; margin-bottom: 8px;
         }
         .stat-unit { font-size: 1.2rem; color: #888; font-weight: 600; -webkit-text-fill-color: #888; }
-        .stat-desc { font-size: 0.9rem; color: #777; list-style: none; padding: 0; margin: 0; }
-        .stat-desc li { margin-bottom: 4px; position: relative; padding-left: 12px; }
-        .stat-desc li::before { content: '•'; position: absolute; left: 0; color: var(--brand-green); }
+        
+        .stat-desc { font-size: 0.95rem; color: #666; list-style: none; padding: 0; margin: 0; }
+        .stat-desc li { margin-bottom: 6px; position: relative; padding-left: 12px; }
+        .stat-desc li::before { content: '•'; position: absolute; left: 0; color: var(--brand-green); font-weight: bold; }
+        
+        /* 상승 화살표 뱃지 */
+        .growth-badge {
+            display: inline-block; background: #E8F5E9; color: var(--brand-dark-green);
+            padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800;
+            margin-left: 8px; vertical-align: middle; -webkit-text-fill-color: var(--brand-dark-green);
+        }
 
         /* 모바일 대응 */
         @media (max-width: 768px) {
             .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 30px; }
             .impact-section-header, .impact-grid { padding: 25px; }
-            .stat-value { font-size: 2.2rem; }
+            .stat-value { font-size: 2.5rem; }
         }
 
-        /* [Modal & Animation CSS] */
+        /* [Modal CSS] */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(8px); }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-box { background: #fff; width: 95%; max-width: 1000px; max-height: 90vh; border-radius: 24px; overflow-y: auto; position: relative; transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.3); }
@@ -337,37 +346,38 @@
                     <div class="impact-grid grid-2">
                         <div class="stat-group">
                             <div class="stat-item">
-                                <span class="stat-label">👨‍👩‍👧‍👦 사업 수혜 인원 (People)</span>
+                                <span class="stat-label">👨‍👩‍👧‍👦 사업 수혜 인원 <span class="growth-badge">1.3배 ↗</span></span>
                                 <span class="stat-value" data-target="102">0<span class="stat-unit">만 명</span></span>
                                 <ul class="stat-desc">
-                                    [cite_start]<li>서비스 수혜 인원 1,019,039명 [cite: 1265]</li>
-                                    [cite_start]<li>사업 운영 횟수 535,500회 [cite: 1262]</li>
+                                    <li>서비스 수혜 인원 1,019,039명</li>
+                                    <li>사업 운영 횟수 535,500회</li>
                                 </ul>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-label">💰 총 수혜 금액 (Support)</span>
+                                <span class="stat-label">💰 총 수혜 금액 <span class="growth-badge">2.2배 ↗</span></span>
                                 <span class="stat-value" data-target="46.2">0<span class="stat-unit">억 원</span></span>
                                 <ul class="stat-desc">
-                                    [cite_start]<li>4,620,256,160원 [cite: 1268]</li>
-                                    [cite_start]<li>공유옷장 경제적 가치 92억 원 [cite: 1271]</li>
+                                    <li>누적 지원액 46억 2,025만원</li>
+                                    <li>공유옷장 경제적 가치 92억 원 창출</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="stat-group">
                             <div class="stat-item">
-                                <span class="stat-label">🌊 해양 쓰레기 수거 (Trash)</span>
+                                <span class="stat-label">🌊 해양 쓰레기 수거 <span class="growth-badge">1.6배 ↗</span></span>
                                 <span class="stat-value" data-target="11.2">0<span class="stat-unit">만 kg</span></span>
                                 <ul class="stat-desc">
-                                    [cite_start]<li>112,164 kg 수거 [cite: 1281]</li>
-                                    [cite_start]<li>해양 인증 부표 전환율 100% [cite: 1280]</li>
+                                    <li>112,164 kg 수거 달성</li>
+                                    <li>해양 인증 부표 전환율 100%</li>
                                 </ul>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-label">🌲 환경 보호 (Nature)</span>
+                                <span class="stat-label">🌲 환경 보호 면적</span>
                                 <span class="stat-value" data-target="10284">0<span class="stat-unit">ha</span></span>
                                 <ul class="stat-desc">
-                                    [cite_start]<li>산양 보호 면적 10,284ha [cite: 1275]</li>
-                                    [cite_start]<li>거문도 해양생물 서식밀도 50% 증가 [cite: 1277]</li>
+                                    <li>산양 보호 면적 10,284ha</li>
+                                    <li>거문도 해양생물 서식밀도 50% 증가</li>
+                                    <li>남산 투명 방음벽 새 충돌 사고 100% 감소</li>
                                 </ul>
                             </div>
                         </div>
@@ -381,27 +391,27 @@
                     </div>
                     <div class="impact-grid grid-3">
                         <div class="stat-item">
-                            <span class="stat-label">🙌 참여 시민 (Citizens)</span>
+                            <span class="stat-label">🙌 참여 시민 <span class="growth-badge">1.5배 ↗</span></span>
                             <span class="stat-value" data-target="85">0<span class="stat-unit">만 명</span></span>
                             <ul class="stat-desc">
-                                [cite_start]<li>시민 참여 845,321명 [cite: 1306]</li>
-                                [cite_start]<li>사업 운영 2,937회 [cite: 1307]</li>
+                                <li>시민 참여 845,321명</li>
+                                <li>사업 운영 횟수 2,937회</li>
                             </ul>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">🏢 기업 변화 (Corporate)</span>
+                            <span class="stat-label">🏢 기업 변화 <span class="growth-badge">1.3배 ↗</span></span>
                             <span class="stat-value" data-target="70">0<span class="stat-unit">건</span></span>
                             <ul class="stat-desc">
-                                [cite_start]<li>기업 관행 변화 19건 [cite: 1312]</li>
-                                [cite_start]<li>시정 촉구 활동 51건 [cite: 1314]</li>
+                                <li>기업 관행 변화 19건</li>
+                                <li>시정 촉구 및 제안 활동 51건</li>
                             </ul>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">🏛️ 정부 변화 (Policy)</span>
+                            <span class="stat-label">🏛️ 정부 변화</span>
                             <span class="stat-value" data-target="80">0<span class="stat-unit">건</span></span>
                             <ul class="stat-desc">
-                                [cite_start]<li>정책 및 제도 변화 80건 [cite: 1321]</li>
-                                [cite_start]<li>정책 관련 언론 대응 668회 [cite: 1322]</li>
+                                <li>정책 및 제도 변화 80건</li>
+                                <li>정책 관련 언론 대응 668회</li>
                             </ul>
                         </div>
                     </div>
@@ -414,27 +424,28 @@
                     </div>
                     <div class="impact-grid grid-3">
                         <div class="stat-item">
-                            <span class="stat-label">🧠 인적 자본 (Human)</span>
+                            <span class="stat-label">🧠 인적 자본</span>
                             <span class="stat-value" data-target="26.3">0<span class="stat-unit">만 명</span></span>
                             <ul class="stat-desc">
-                                [cite_start]<li>후원자 251,940명 [cite: 1356]</li>
-                                [cite_start]<li>활동가 11,622명 [cite: 1357]</li>
+                                <li>후원자(잠재 포함) 251,940명</li>
+                                <li>활동가/봉사자 11,622명 <span class="growth-badge" style="font-size:0.7em;">3배 증가</span></li>
+                                <li>연구보고서 및 의제발굴 129건</li>
                             </ul>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">🤝 사회 자본 (Network)</span>
+                            <span class="stat-label">🤝 사회 자본</span>
                             <span class="stat-value" data-target="1921">0<span class="stat-unit">개</span></span>
                             <ul class="stat-desc">
-                                [cite_start]<li>네트워크 구축 1,907개 [cite: 1375]</li>
-                                [cite_start]<li>공간 구축 14개 [cite: 1376]</li>
+                                <li>네트워크 구축 1,907개</li>
+                                <li>공간 구축 14개</li>
                             </ul>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">💰 경제 자본 (Finance)</span>
+                            <span class="stat-label">💰 경제 자본 <span class="growth-badge">1.3배 ↗</span></span>
                             <span class="stat-value" data-target="763">0<span class="stat-unit">억 원</span></span>
                             <ul class="stat-desc">
-                                [cite_start]<li>기금 및 대출 503억 원 [cite: 1381]</li>
-                                [cite_start]<li>후원금 259억 원 [cite: 1381]</li>
+                                <li>기금 및 대출 503억 원</li>
+                                <li>후원금 259억 원</li>
                             </ul>
                         </div>
                     </div>
@@ -534,7 +545,6 @@
             document.getElementById('mTitle').textContent = data.title;
             document.getElementById('mOrg').textContent = data.org;
             
-            // 헤더 색상 및 텍스트 컬러 조정
             document.querySelector('.modal-header').style.background = data.color;
             if(id === 'case6') {
                 document.querySelector('.modal-header').style.color = '#333';
@@ -586,12 +596,11 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // 3. 스크롤 인터랙션 & 숫자 애니메이션 (업그레이드: 소수점 지원)
+        // 3. 스크롤 인터랙션 & 숫자 애니메이션 (소수점 지원)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // 상세 대시보드 내 숫자 카운팅
                     const nums = entry.target.querySelectorAll('.stat-value');
                     nums.forEach(num => {
                         const target = parseFloat(num.getAttribute('data-target'));
@@ -610,10 +619,8 @@
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 
-                // 소수점이 있는 경우 (46.2, 11.2, 26.3)
                 let current = progress * (end - start) + start;
                 
-                // 원래 숫자가 정수면 정수로, 소수면 소수점 1자리까지 표시
                 if (Number.isInteger(end)) {
                     obj.childNodes[0].nodeValue = Math.floor(current);
                 } else {
@@ -624,7 +631,6 @@
                     window.requestAnimationFrame(step);
                 } else {
                     obj.classList.add('counted');
-                    // 최종값 보정 (애니메이션 오차 방지)
                     if (Number.isInteger(end)) {
                         obj.childNodes[0].nodeValue = end;
                     } else {
