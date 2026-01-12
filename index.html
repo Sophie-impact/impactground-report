@@ -358,7 +358,7 @@
                                 <span class="stat-value" data-target="46.2">0<span class="stat-unit">억 원</span></span>
                                 <ul class="stat-desc">
                                     <li>누적 지원액 46억 2,025만원</li>
-                                    <li>공유옷장 경제적 가치 92억 원 창출</li>
+                                    [cite_start]<li>공유옷장 경제적 가치 92억 원 창출 [cite: 1271]</li>
                                 </ul>
                             </div>
                         </div>
@@ -367,17 +367,17 @@
                                 <span class="stat-label">🌊 해양 쓰레기 수거 <span class="growth-badge">1.6배 ↗</span></span>
                                 <span class="stat-value" data-target="11.2">0<span class="stat-unit">만 kg</span></span>
                                 <ul class="stat-desc">
-                                    <li>112,164 kg 수거 달성</li>
-                                    <li>해양 인증 부표 전환율 100%</li>
+                                    [cite_start]<li>112,164 kg 수거 달성 [cite: 1281]</li>
+                                    [cite_start]<li>해양 인증 부표 전환율 100% [cite: 1280]</li>
                                 </ul>
                             </div>
                             <div class="stat-item">
                                 <span class="stat-label">🌲 환경 보호 면적</span>
                                 <span class="stat-value" data-target="10284">0<span class="stat-unit">ha</span></span>
                                 <ul class="stat-desc">
-                                    <li>산양 보호 면적 10,284ha</li>
-                                    <li>거문도 해양생물 서식밀도 50% 증가</li>
-                                    <li>남산 투명 방음벽 새 충돌 사고 100% 감소</li>
+                                    [cite_start]<li>산양 보호 면적 10,284ha [cite: 1275]</li>
+                                    [cite_start]<li>거문도 해양생물 서식밀도 50% 증가 [cite: 1277]</li>
+                                    [cite_start]<li>남산 투명 방음벽 새 충돌 사고 100% 감소 [cite: 1279]</li>
                                 </ul>
                             </div>
                         </div>
@@ -394,7 +394,7 @@
                             <span class="stat-label">🙌 참여 시민 <span class="growth-badge">1.5배 ↗</span></span>
                             <span class="stat-value" data-target="85">0<span class="stat-unit">만 명</span></span>
                             <ul class="stat-desc">
-                                <li>시민 참여 845,321명 [cite: 1306]</li>
+                                [cite_start]<li>시민 참여 845,321명 [cite: 1306]</li>
                                 [cite_start]<li>사업 운영 횟수 2,937회 [cite: 1307]</li>
                             </ul>
                         </div>
@@ -621,6 +621,7 @@
                 
                 let current = progress * (end - start) + start;
                 
+                // 애니메이션 중 소수점 처리
                 if (Number.isInteger(end)) {
                     obj.childNodes[0].nodeValue = Math.floor(current);
                 } else {
@@ -631,6 +632,7 @@
                     window.requestAnimationFrame(step);
                 } else {
                     obj.classList.add('counted');
+                    // 최종값 보정
                     if (Number.isInteger(end)) {
                         obj.childNodes[0].nodeValue = end;
                     } else {
