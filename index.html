@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 임팩트그라운드 성과보고서</title>
+    <title>2024 임팩트그라운드 성과보고서</title>
     <style>
         /* [브랜드 아이덴티티 시스템] */
         :root {
@@ -38,13 +38,15 @@
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
+        
+        /* 연도 표기 스타일 (작게) */
         .small-year {
-            font-size: 0.6em; /* H2 대비 60% 크기 */
-            color: #888;
+            font-size: 0.5em; /* 제목 대비 50% 크기 */
+            color: #999;      /* 연한 회색 */
             font-weight: 600;
             letter-spacing: 0;
             vertical-align: middle;
-            margin-left: 8px;
+            margin-left: 10px;
         }
 
         /* [Header] */
@@ -61,7 +63,7 @@
 
         /* [Floating Objects Common Style] */
         .floating-obj { 
-            position: absolute; pointer-events: none; z-index: 1; 
+            position: absolute; pointer-events: none;
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
         }
 
@@ -72,17 +74,23 @@
             position: relative; background: radial-gradient(circle at 50% 50%, #E8F5E9, #F7F9F8); overflow: hidden;
         }
         
+        /* Hero Objects */
         .obj-cloud { 
             top: 15%; left: 10%; width: 180px; opacity: 0.9;
+            z-index: 1;
             animation: float 6s ease-in-out infinite;
         }
+        
         .obj-tree1 { 
             bottom: 0; left: 5%; width: 220px; 
+            z-index: 1;
             animation: floatTree 7s ease-in-out infinite 1s;
         }
+
         .obj-tree2 { 
-            bottom: 0; right: 8%; width: 180px; 
-            /* filter: blur(1px); 제거: 해상도 저하 방지 */
+            bottom: 0; right: 8%; width: 160px; /* 해상도 고려하여 크기 축소 */
+            z-index: 1;
+            /* filter: blur(1px); 제거하여 선명하게 */
             animation: floatTree 8s ease-in-out infinite;
         }
 
@@ -97,7 +105,7 @@
         /* [Philosophy Section] */
         .philosophy { padding: 120px 0; background: var(--surface-white); position: relative; overflow: hidden; }
         .obj-drop {
-            top: 5%; right: 5%; width: 130px; opacity: 0.85;
+            top: 5%; right: 5%; width: 130px; opacity: 0.85; z-index: 1;
             animation: float 5s ease-in-out infinite;
         }
 
@@ -120,14 +128,19 @@
 
         /* [Partner Cases] */
         .cases { padding: 120px 0; background: #F1F8E9; position: relative; overflow: hidden;}
+        /* 화살표 스타일 수정 */
         .obj-arrow {
             bottom: 10%; left: 5%; width: 160px; opacity: 0.8;
-            /* z-index를 높여서 카드보다 앞에 오게 함 */
-            z-index: 3;
+            /* 중요: 카드는 z-index가 2이므로, 1로 설정하여 뒤로 보냄 */
+            z-index: 1; 
             animation: float 6s ease-in-out infinite 2s;
         }
 
-        .case-slider { display: flex; overflow-x: auto; gap: 24px; padding: 20px 10px 40px; scroll-behavior: smooth; position: relative; z-index: 2; }
+        .case-slider { 
+            display: flex; overflow-x: auto; gap: 24px; padding: 20px 10px 40px; scroll-behavior: smooth; 
+            /* 슬라이더를 앞으로 뺌 */
+            position: relative; z-index: 10; 
+        }
         .case-slider::-webkit-scrollbar { height: 6px; }
         .case-slider::-webkit-scrollbar-thumb { background: #A5D6A7; border-radius: 3px; }
         .case-card { min-width: 340px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.3s; cursor: pointer; position: relative; border: 1px solid rgba(0,0,0,0.03); }
@@ -150,7 +163,7 @@
         /* [Detailed Impact Dashboard] */
         .data { padding: 140px 0; background: #fff; position: relative; overflow: hidden; }
         .obj-earth {
-            top: 5%; right: 5%; width: 220px; opacity: 0.9;
+            top: 5%; right: 5%; width: 220px; opacity: 0.9; z-index: 1;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
             animation: float 8s ease-in-out infinite;
         }
@@ -243,24 +256,21 @@
         .footer-logo { font-weight: 900; font-size: 1.5rem; color: #111; margin-bottom: 10px; display: block; letter-spacing: -0.05em;}
         .footer-text { font-size: 0.9rem; color: #888; margin-bottom: 30px; }
         
-        /* New Download Buttons Style */
         .download-group {
             display: flex;
             justify-content: center;
             gap: 15px;
-            flex-wrap: wrap; /* 모바일에서 자동 줄바꿈 */
+            flex-wrap: wrap;
         }
         .download-btn {
             display: inline-flex; align-items: center; gap: 10px;
             padding: 16px 30px; background: var(--text-dark); color: #fff;
             text-decoration: none; border-radius: 50px; font-weight: 700;
             transition: all 0.3s;
-            min-width: 220px; /* 버튼 크기 통일 */
+            min-width: 220px; 
             justify-content: center;
         }
         .download-btn:hover { background: var(--brand-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(36, 210, 146, 0.4); }
-        
-        /* Secondary Button (Optional: different style for English if needed, but keeping same for uniformity) */
         .download-btn.secondary { background: #333; }
         .download-btn.secondary:hover { background: var(--brand-green); }
     </style>
@@ -314,7 +324,7 @@
         <div class="container">
             <span class="section-tag">STRATEGY</span>
             <h2 class="section-title fade-in" style="color:#fff">Impact Trigger</h2>
-            <p style="text-align:center; color:#aaa; margin-bottom:60px;" class="fade-in">사회문제를 해결하는 5가지 혁신적 메커니즘 (클릭하여 상세 보기)</p>
+            <p style="text-align:center; color:#aaa; margin-bottom:60px;" class="fade-in">사회문제를 해결하는 5가지 혁신적 메커니즘</p>
             <div class="trigger-grid fade-in">
                 <div class="trigger-item" onclick="openTriggerModal('tech')"><span class="trigger-icon">💻</span><h4>기술화</h4></div>
                 <div class="trigger-item" onclick="openTriggerModal('platform')"><span class="trigger-icon">🤝</span><h4>플랫폼</h4></div>
@@ -375,7 +385,7 @@
         <img src="obj_earth.png" class="floating-obj obj-earth" alt="Earth">
         <div class="container">
             <span class="section-tag">TOTAL IMPACT</span>
-            <h2 class="section-title fade-in" style="margin-bottom: 60px;">Our Impact <span class="small-year">(2023-2024)</span></h2>
+            <h2 class="section-title fade-in" style="margin-bottom: 60px;">Our Impact<span class="small-year">(2023-2024)</span></h2>
             
             <div class="impact-dashboard fade-in">
                 <div class="impact-section-card">
