@@ -86,7 +86,7 @@
         .triggers::before { content: ''; position: absolute; top: -50%; left: -20%; width: 80%; height: 100%; background: radial-gradient(circle, rgba(36, 210, 146, 0.08) 0%, transparent 60%); }
         .triggers::after { content: ''; position: absolute; bottom: -50%; right: -20%; width: 80%; height: 100%; background: radial-gradient(circle, rgba(0, 168, 107, 0.08) 0%, transparent 60%); }
 
-        /* Process Flow */
+        /* Process Flow - Slim & Sleek */
         .process-flow {
             display: flex; align-items: center; justify-content: space-between; gap: 20px;
             margin-bottom: 50px; max-width: 900px; margin-left: auto; margin-right: auto;
@@ -94,18 +94,23 @@
         }
         .flow-step {
             flex: 1; text-align: center; padding: 20px 15px;
-            border-radius: 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px; 
+            background: rgba(255,255,255,0.08); 
+            border: 1px solid rgba(255,255,255,0.2);
             transition: 0.3s;
         }
         .flow-step.active {
-            background: rgba(36, 210, 146, 0.15); border: 1px solid var(--brand-green);
-            transform: scale(1.02); box-shadow: 0 0 25px rgba(36, 210, 146, 0.2);
+            background: rgba(36, 210, 146, 0.15); 
+            border: 1px solid var(--brand-green);
+            transform: scale(1.02); 
+            box-shadow: 0 0 25px rgba(36, 210, 146, 0.2);
         }
         .flow-icon { display: block; font-size: 1.6rem; margin-bottom: 10px; }
         .flow-step h4 { font-size: 1rem; margin-bottom: 4px; color: #fff; font-weight: 700; }
         .flow-step p { font-size: 0.85rem; margin: 0; color: #ccc; letter-spacing: -0.5px; }
         .flow-arrow { font-size: 1.2rem; color: #666; }
 
+        /* Connecting Line */
         .flow-connector-line {
             width: 2px; height: 40px; background: linear-gradient(to bottom, var(--brand-green), rgba(255,255,255,0.1));
             margin: -20px auto 40px; position: relative; z-index: 1; opacity: 0.8;
@@ -113,7 +118,8 @@
 
         /* Trigger Grid */
         .trigger-grid { 
-            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 0; position: relative; 
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; 
+            margin-top: 0; position: relative; 
         }
         .trigger-item { 
             background: rgba(255,255,255,0.03); padding: 40px 15px; text-align: center; 
@@ -166,9 +172,12 @@
         .impact-section-header { background: #F1F8E9; padding: 25px 40px; border-bottom: 1px solid #E0E0E0; display: flex; align-items: center; gap: 15px; }
         .impact-badge { background: var(--brand-dark-green); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
         .impact-section-title { font-size: 1.4rem; color: var(--text-dark); margin: 0; }
+        
+        /* Grid Layout Fix: Change grid-2 to grid-3 for the first section */
         .impact-grid { display: grid; padding: 40px; gap: 40px; }
         .grid-2 { grid-template-columns: 1fr 1fr; }
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        
         .stat-item { padding-left: 20px; border-left: 4px solid #eee; transition: 0.3s; }
         .stat-item:hover { border-left-color: var(--brand-green); }
         .stat-label { font-size: 1rem; font-weight: 700; color: #555; display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
@@ -178,7 +187,7 @@
         .stat-desc li { margin-bottom: 6px; position: relative; padding-left: 12px; }
         .stat-desc li::before { content: '•'; position: absolute; left: 0; color: var(--brand-green); font-weight: bold; }
         .growth-badge { display: inline-block; background: #E8F5E9; color: var(--brand-dark-green); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800; margin-left: 8px; vertical-align: middle; -webkit-text-fill-color: var(--brand-dark-green); }
-        .impact-note { text-align: right; font-size: 0.8rem; color: #999; margin-top: -50px; margin-bottom: 60px; font-weight: 400; }
+        .impact-note { text-align: left; font-size: 0.8rem; color: #999; margin-top: 0; margin-bottom: 30px; font-weight: 400; }
 
         /* Animation Keyframes */
         @keyframes float { 0%, 100% {transform: translateY(0) rotate(0deg);} 50% {transform: translateY(-20px) rotate(1deg);} }
@@ -409,35 +418,31 @@
                         <span class="impact-badge">1</span>
                         <h3 class="impact-section-title">수혜자의 변화</h3>
                     </div>
-                    <div class="impact-grid grid-2">
-                        <div class="stat-group">
-                            <div class="stat-item">
-                                <span class="stat-label">👨‍👩‍👧‍👦 사업 수혜 인원 <span class="growth-badge">1.3배 ↗</span></span>
-                                <span class="stat-value" data-target="102">0<span class="stat-unit">만 명</span></span>
-                                <ul class="stat-desc">
-                                    <li>서비스 수혜 인원 1,019,039명</li>
-                                    <li>사업 운영 횟수 535,500회</li>
-                                </ul>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">💰 지원 수혜 금액 <span class="growth-badge">2.2배 ↗</span></span>
-                                <span class="stat-value" data-target="46.2">0<span class="stat-unit">억 원</span></span>
-                                <ul class="stat-desc">
-                                    <li>지원 수혜 금액 46억 2,025만원</li>
-                                    <li>공유옷장 경제적 가치 92억 원 창출</li>
-                                </ul>
-                            </div>
+                    <div class="impact-grid grid-3">
+                        <div class="stat-item">
+                            <span class="stat-label">👨‍👩‍👧‍👦 사업 수혜 인원 <span class="growth-badge">1.3배 ↗</span></span>
+                            <span class="stat-value" data-target="102">0<span class="stat-unit">만 명</span></span>
+                            <ul class="stat-desc">
+                                <li>서비스 수혜 인원 1,019,039명</li>
+                                <li>사업 운영 횟수 535,500회</li>
+                            </ul>
                         </div>
-                        <div class="stat-group">
-                            <div class="stat-item">
-                                <span class="stat-label">🌊 해양 쓰레기 수거 <span class="growth-badge">1.6배 ↗</span></span>
-                                <span class="stat-value" data-target="11.2">0<span class="stat-unit">만 kg</span></span>
-                                <ul class="stat-desc">
-                                    <li>해양 인증 부표 전환율 100%</li>
-                                    <li>해양쓰레기 수거량 112,164kg</li>
-                                    <li>거문도(서도) 종합오염도 감소율 37%</li>
-                                </ul>
-                            </div>
+                        <div class="stat-item">
+                            <span class="stat-label">💰 지원 수혜 금액 <span class="growth-badge">2.2배 ↗</span></span>
+                            <span class="stat-value" data-target="46.2">0<span class="stat-unit">억 원</span></span>
+                            <ul class="stat-desc">
+                                <li>누적 지원액 46억 2,025만원</li>
+                                <li>공유옷장 경제적 가치 92억 원 창출</li>
+                            </ul>
+                        </div>
+                         <div class="stat-item">
+                            <span class="stat-label">🌊 해양 쓰레기 수거 <span class="growth-badge">1.6배 ↗</span></span>
+                            <span class="stat-value" data-target="11.2">0<span class="stat-unit">만 kg</span></span>
+                            <ul class="stat-desc">
+                                <li>해양 인증 부표 전환율 100%</li>
+                                <li>해양쓰레기 수거량 112,164kg</li>
+                                <li>거문도(서도) 종합오염도 감소율 37%</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -487,7 +492,7 @@
                             <ul class="stat-desc">
                                 <li>후원자(잠재 포함) 251,940명</li>
                                 <li>활동가/봉사자 11,622명 <span class="growth-badge" style="font-size:0.7em;">3배 증가</span></li>
-                                <li>연구보고서, 의제발굴 129건</li>
+                                <li>연구보고서 및 의제발굴 129건</li>
                             </ul>
                         </div>
                         <div class="stat-item">
